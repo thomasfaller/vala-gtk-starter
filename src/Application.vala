@@ -22,8 +22,25 @@
 public class MyApp : Gtk.Application {
     public MyApp () {
         Object (
-            application_id : 
-        )
+            application_id : "com.github.thomasfaller.vala-gtk-starter",
+            flags: ApplicationFlags.FLAGS_NONE
+        );
     }
+
+    protected override void activate () {
+        var main_window = new Gtk.ApplicationWindow (this) {
+            default_height = 500,
+            default_width = 720,
+            title = "New App"
+        };
+        var label = new Gtk.Label ("Hello Again World!");
+        main_window.add (label);
+        main_window.show_all ();
+    }
+
+    public static int main (string[] args) {
+        return new MyApp ().run (args);
+    }
+
 
 }
